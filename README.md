@@ -1,26 +1,7 @@
-# DAO Template
+# DAO Templates:
 
-<div id="top"></div>
+[You can also see the Python/Brownie version of this here](https://github.com/brownie-mix/dao-mix)
 
-- [DAO Template](#dao-template)
-  - [About](#about)
-    - [How to DAO](#how-to-dao)
-    - [No Code Tools](#no-code-tools)
-- [Getting Started](#getting-started)
-  - [Requirements](#requirements)
-    - [Installation](#installation)
-  - [Usage](#usage)
-    - [On-Chain Governance Example](#on-chain-governance-example)
-    - [Off-Chain governance Example](#off-chain-governance-example)
-  - [Roadmap](#roadmap)
-  - [Contributing](#contributing)
-  - [License](#license)
-  - [Contact](#contact)
-  - [Acknowledgments](#acknowledgments)
-
-[You can also see the python/brownie version of this here.](https://github.com/brownie-mix/dao-mix)
-
-<!-- ABOUT THE PROJECT -->
 ## About
 
 ### How to DAO
@@ -35,7 +16,7 @@ This repo is meant to give you all the knowledge you need to start a DAO and do 
 A typical on-chain governance structure might look like: 
 - ERC20 based voting happens on a project like [Tally](https://www.withtally.com/), but could hypothetically be done by users manually calling the vote functions. 
 - Anyone can execute a proposal once it has passed
-_Examples [Compound](https://compound.finance/governance)_
+_Examples: [Compound](https://compound.finance/governance)_
 
 On-chain governance can be much more expensive, but involves fewer parts, and the tooling is still being developed. 
 
@@ -76,24 +57,18 @@ The following have tools to help you start a DAO without having to deploy contra
 - [DAOHaus](https://app.daohaus.club/summon)
 - [DAO Leaderboard](https://deepdao.io/#/deepdao/dashboard)
 
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-
-<!-- GETTING STARTED -->
 # Getting Started 
 
-Work with this repo in the browser (optional)<br/>
+Work with this repo in the browser (optional)
 
-[![Open in Gitpod](https://gitpod.io/button/open-in-gitpod.svg)](https://gitpod.io/#https://github.com/PatrickAlphaC/dao-template)
-
-It's recommended that you've gone through the [hardhat getting started documentation](https://hardhat.org/getting-started/) before proceeding here. 
+It's recommended that you've gone through the [Hardhat getting started documentation](https://hardhat.org/getting-started/) before proceeding here. 
 
 ## Requirements
 
 - [git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
   - You'll know you did it right if you can run `git --version` and you see a response like `git version x.x.x`
-- [Nodejs](https://nodejs.org/en/)
-  - You'll know you've installed nodejs right if you can run:
+- [Node.js](https://nodejs.org/en/)
+  - You'll know you've installed Node.js right if you can run:
     - `node --version`and get an ouput like: `vx.x.x`
 - [Yarn](https://classic.yarnpkg.com/lang/en/docs/install/) instead of `npm`
   - You'll know you've installed yarn right if you can run:
@@ -104,15 +79,15 @@ It's recommended that you've gone through the [hardhat getting started documenta
 
 1. Clone this repo:
 ```
-git clone https://github.com/PatrickAlphaC/dao-template
-cd dao-template
+git clone `url`
+cd `path`
 ```
 2. Install dependencies
 ```sh
 yarn
 ```
 
-or 
+or,
 
 ```
 npm i 
@@ -130,15 +105,14 @@ npx hardhat test
 
 If you want to deploy to a testnet:
 4. Add a `.env` file with the same contents of `.env.example`, but replaced with your variables.
-![WARNING](https://via.placeholder.com/15/f03c15/000000?text=+) **WARNING** ![WARNING](https://via.placeholder.com/15/f03c15/000000?text=+)
+
+**WARNING**:
 > DO NOT PUSH YOUR PRIVATE_KEY TO GITHUB
 
-
-<!-- USAGE EXAMPLES -->
 ## Usage
 ### On-Chain Governance Example
 
-Here is the rundown of what the test suite does. 
+Here is the rundown of what the test suite does:
 
 1. We will deploy an ERC20 token that we will use to govern our DAO.
 2. We will deploy a Timelock contract that we will use to give a buffer between executing proposals.
@@ -179,37 +153,24 @@ yarn hardhat run scripts/queue-and-execute.ts --network localhost
 ```
 
 
-You can also use the [Openzeppelin contract wizard](https://wizard.openzeppelin.com/#governor) to get other contracts to work with variations of this governance contract. 
+You can also use the [OpenZeppelin contract wizard](https://wizard.openzeppelin.com/#governor) to get other contracts to work with variations of this governance contract. 
 
 ### Off-Chain governance Example
 
-> This sectoin is still being developed. 
+> This section is being developed. 
 
-Deploy your ERC20 and [make proposals in snapshot](https://docs.snapshot.org/proposals/create). 
+Deploy your ERC20 and [make proposals in Snapshot](https://docs.snapshot.org/proposals/create). 
 
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-
-
-<!-- ROADMAP -->
 ## Roadmap
 
 - [] Add Upgradeability examples with the UUPS proxy pattern
 - [] Add Chainlink Oracle Integration with Snapsafe example
 
-See the [open issues](https://github.com/PatrickAlphaC/dao-template/issues) for a full list of proposed features (and known issues).
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-
-
-<!-- CONTRIBUTING -->
 ## Contributing
 
-Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
+Contributions are what make the open source community such an amazing place to learn, inspire and create. Any contributions you make are **greatly appreciated**.
 
 If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
-Don't forget to give the project a star! Thanks again!
 
 1. Fork the Project
 2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
@@ -217,34 +178,14 @@ Don't forget to give the project a star! Thanks again!
 4. Push to the Branch (`git push origin feature/AmazingFeature`)
 5. Open a Pull Request
 
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-
-
-<!-- LICENSE -->
 ## License
 
 Distributed under the MIT License. See `LICENSE.txt` for more information.
 
-<p align="right">(<a href="#top">back to top</a>)</p>
+## Acknowledgements
 
-
-
-<!-- CONTACT -->
-## Contact
-
-Hardhat - [@HardhatHQ](https://twitter.com/HardhatHQ)
-Patrick Collins - [@patrickalphac](https://twitter.com/patrickalphac)
-
-<p align="right">(<a href="#top">back to top</a>)</p>
-
-
-
-<!-- ACKNOWLEDGMENTS -->
-## Acknowledgments
-
-* [Openzeppelin Governance Walkthrough](https://docs.openzeppelin.com/contracts/4.x/governance)
-* [Openzeppelin Governance Github](https://github.com/OpenZeppelin/openzeppelin-contracts/tree/master/contracts/governance)
+* [OpenZeppelin Governance Walkthrough](https://docs.openzeppelin.com/contracts/4.x/governance)
+* [OpenZeppelin Governance Github](https://github.com/OpenZeppelin/openzeppelin-contracts/tree/master/contracts/governance)
 * [Vitalik on DAOs](https://blog.ethereum.org/2014/05/06/daos-dacs-das-and-more-an-incomplete-terminology-guide/)
 * [Vitalik on On-Chain Governance](https://vitalik.ca/general/2021/08/16/voting3.html)
 * [Vitalik on Governance in General](https://vitalik.ca/general/2017/12/17/voting.html)
@@ -252,4 +193,4 @@ Patrick Collins - [@patrickalphac](https://twitter.com/patrickalphac)
 <p align="right">(<a href="#top">back to top</a>)</p>
 
 
-You can check out the [openzeppelin javascript tests](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/e6f26b46fc8015f1b9b09bb85297464069302125/test/governance/extensions/GovernorTimelockControl.test) for a full suite of an example of what is possible. 
+You can check out the [OpenZeppelin JavaScript tests](https://github.com/OpenZeppelin/openzeppelin-contracts/blob/e6f26b46fc8015f1b9b09bb85297464069302125/test/governance/extensions/GovernorTimelockControl.test) for a full suite of an example of what is possible. 
