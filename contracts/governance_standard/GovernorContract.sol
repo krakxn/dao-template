@@ -22,18 +22,18 @@ contract GovernorContract is
         uint256 _quorumPercentage,
         uint256 _votingPeriod,
         uint256 _votingDelay
-    )
-        Governor("GovernorContract")
+    )   Governor("GovernorContract") 
         GovernorSettings(
-            _votingDelay, /* 1 block */ // votind delay
-            _votingPeriod, // 45818, /* 1 week */ // voting period
-            0 // proposal threshold
+            _votingDelay, /* 1 block */ /// Voting delay
+            _votingPeriod, /* 1 week */ /// Voting period
+            0 /// proposal threshold
         )
         GovernorVotes(_token)
         GovernorVotesQuorumFraction(_quorumPercentage)
-        GovernorTimelockControl(_timelock)
-    {}
-
+        GovernorTimelockControl(_timelock) {
+        /// Empty
+        }
+ 
     function votingDelay() public view override(IGovernor, GovernorSettings) returns (uint256) {
         return super.votingDelay();
     }
@@ -42,14 +42,13 @@ contract GovernorContract is
         return super.votingPeriod();
     }
 
-    // The following functions are overrides required by Solidity.
+    /// The following functions are overrides required by Solidity:
 
     function quorum(uint256 blockNumber)
         public
         view
         override(IGovernor, GovernorVotesQuorumFraction)
-        returns (uint256)
-    {
+        returns (uint256) {
         return super.quorum(blockNumber);
     }
 
@@ -57,8 +56,7 @@ contract GovernorContract is
         public
         view
         override(IGovernor, Governor)
-        returns (uint256)
-    {
+        returns (uint256) {
         return super.getVotes(account, blockNumber);
     }
 
@@ -66,8 +64,7 @@ contract GovernorContract is
         public
         view
         override(Governor, GovernorTimelockControl)
-        returns (ProposalState)
-    {
+        returns (ProposalState) {
         return super.state(proposalId);
     }
 
@@ -84,8 +81,7 @@ contract GovernorContract is
         public
         view
         override(Governor, GovernorSettings)
-        returns (uint256)
-    {
+        returns (uint256) {
         return super.proposalThreshold();
     }
 
@@ -112,8 +108,7 @@ contract GovernorContract is
         internal
         view
         override(Governor, GovernorTimelockControl)
-        returns (address)
-    {
+        returns (address) {
         return super._executor();
     }
 
@@ -121,8 +116,7 @@ contract GovernorContract is
         public
         view
         override(Governor, GovernorTimelockControl)
-        returns (bool)
-    {
+        returns (bool) {
         return super.supportsInterface(interfaceId);
     }
 }
