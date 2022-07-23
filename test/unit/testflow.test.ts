@@ -19,6 +19,7 @@ describe("Governor Flow", async () => {
   let box: Box
   const voteWay = 1 // for
   const reason = "I lika do da cha cha"
+  
   beforeEach(async () => {
     await deployments.fixture(["all"])
     governor = await ethers.getContract("GovernorContract")
@@ -32,8 +33,9 @@ describe("Governor Flow", async () => {
   })
 
   it("proposes, votes, waits, queues, and then executes", async () => {
-    // propose
+    // Propose
     const encodedFunctionCall = box.interface.encodeFunctionData(FUNC, [NEW_STORE_VALUE])
+    
     const proposeTx = await governor.propose(
       [box.address],
       [0],
@@ -45,9 +47,9 @@ describe("Governor Flow", async () => {
     const proposalId = proposeReceipt.events![0].args!.proposalId
     let proposalState = await governor.state(proposalId)
     console.log(`Current Proposal State: ${proposalState}`)
-
     await moveBlocks(VOTING_DELAY + 1)
-    // vote
+    
+    // Vote
     const voteTx = await governor.castVoteWithReason(proposalId, voteWay, reason)
     await voteTx.wait(1)
     proposalState = await governor.state(proposalId)
@@ -55,17 +57,16 @@ describe("Governor Flow", async () => {
     console.log(`Current Proposal State: ${proposalState}`)
     await moveBlocks(VOTING_PERIOD + 1)
 
-    // queue & execute
-    // const descriptionHash = ethers.utils.keccak256(ethers.utils.toUtf8Bytes(PROPOSAL_DESCRIPTION))
+    // Queue & execute
     const descriptionHash = ethers.utils.id(PROPOSAL_DESCRIPTION)
+    // Alternative:
+    // const descriptionHash = ethers.utils.keccak256(ethers.utils.toUtf8Bytes(PROPOSAL_DESCRIPTION))
     const queueTx = await governor.queue([box.address], [0], [encodedFunctionCall], descriptionHash)
     await queueTx.wait(1)
     await moveTime(MIN_DELAY + 1)
     await moveBlocks(1)
-
     proposalState = await governor.state(proposalId)
     console.log(`Current Proposal State: ${proposalState}`)
-
     console.log("Executing...")
     console.log
     const exTx = await governor.execute([box.address], [0], [encodedFunctionCall], descriptionHash)
