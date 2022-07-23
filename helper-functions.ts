@@ -6,6 +6,7 @@ const { networkConfig } = require("./helper-hardhat-config")
 
 const verify = async (contractAddress, args) => {
     console.log("Verifying contract...")
+    
     try {
         await run("verify:verify", {
             address: contractAddress,
@@ -17,6 +18,7 @@ const verify = async (contractAddress, args) => {
         } else {
             console.log(e)
         }
+    
     }
 }
 
