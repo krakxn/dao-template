@@ -15,7 +15,8 @@ const setupContracts: DeployFunction = async function (hre: HardhatRuntimeEnviro
 
   log("----------------------------------------------------")
   log("Setting up contracts for roles...")
-  // would be great to use multicall here...
+  
+  // Would be great to use multi-call here...
   const proposerRole = await timeLock.PROPOSER_ROLE()
   const executorRole = await timeLock.EXECUTOR_ROLE()
   const adminRole = await timeLock.TIMELOCK_ADMIN_ROLE()
@@ -26,7 +27,7 @@ const setupContracts: DeployFunction = async function (hre: HardhatRuntimeEnviro
   await executorTx.wait(1)
   const revokeTx = await timeLock.revokeRole(adminRole, deployer)
   await revokeTx.wait(1)
-  // Guess what? Now, anything the timelock wants to do has to go through the governance process!
+  // Guess what? Now, anything the timelock wants to do, has to go through the governance process!!
 }
 
 export default setupContracts
