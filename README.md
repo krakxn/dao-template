@@ -1,4 +1,4 @@
-# DAO Templates:
+# DAO Templates - Hardhat:
 
 [You can also see the Python/Brownie version of this here](https://github.com/brownie-mix/dao-mix)
 
