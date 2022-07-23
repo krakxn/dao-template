@@ -10,10 +10,11 @@ contract MyToken is ERC20, ERC20Permit, ERC20Votes, ERC20Wrapper {
     constructor(IERC20 wrappedToken)
         ERC20("MyToken", "MTK")
         ERC20Permit("MyToken")
-        ERC20Wrapper(wrappedToken)
-    {}
+        ERC20Wrapper(wrappedToken) {
+    /// Empty
+    }
 
-    // The functions below are overrides required by Solidity.
+    /// The functions below are overrides required by Solidity:
 
     function _afterTokenTransfer(
         address from,
