@@ -15,7 +15,8 @@ export async function queueAndExecute() {
   const box = await ethers.getContract("Box")
   const encodedFunctionCall = box.interface.encodeFunctionData(functionToCall, args)
   const descriptionHash = ethers.utils.keccak256(ethers.utils.toUtf8Bytes(PROPOSAL_DESCRIPTION))
-  // could also use ethers.utils.id(PROPOSAL_DESCRIPTION)
+  // Alternative:
+  // Could also use ethers.utils.id(PROPOSAL_DESCRIPTION)
 
   const governor = await ethers.getContract("GovernorContract")
   console.log("Queueing...")
@@ -28,13 +29,15 @@ export async function queueAndExecute() {
   }
 
   console.log("Executing...")
-  // this will fail on a testnet because you need to wait for the MIN_DELAY!
+  
+  // This will fail on a testnet because you need to wait for the MIN_DELAY!
   const executeTx = await governor.execute(
     [box.address],
     [0],
     [encodedFunctionCall],
     descriptionHash
   )
+  
   await executeTx.wait(1)
   console.log(`Box value: ${await box.retrieve()}`)
 }
