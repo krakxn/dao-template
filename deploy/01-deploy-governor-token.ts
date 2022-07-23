@@ -11,6 +11,7 @@ const deployGovernanceToken: DeployFunction = async function (hre: HardhatRuntim
   const { deployer } = await getNamedAccounts()
   log("----------------------------------------------------")
   log("Deploying GovernanceToken and waiting for confirmations...")
+  
   const governanceToken = await deploy("GovernanceToken", {
     from: deployer,
     args: [],
@@ -18,10 +19,13 @@ const deployGovernanceToken: DeployFunction = async function (hre: HardhatRuntim
     // we need to wait if on a live network so we can verify properly
     waitConfirmations: networkConfig[network.name].blockConfirmations || 1,
   })
+  
   log(`GovernanceToken at ${governanceToken.address}`)
+  
   if (!developmentChains.includes(network.name) && process.env.ETHERSCAN_API_KEY) {
     await verify(governanceToken.address, [])
   }
+  
   log(`Delegating to ${deployer}`)
   await delegate(governanceToken.address, deployer)
   log("Delegated!")
